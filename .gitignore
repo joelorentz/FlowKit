@@ -42,3 +42,4 @@ wheels/
 # R stuff
 .RData
 .Rhistory
+.python-version

@@ -321,13 +321,20 @@ class Sample(object):
         except KeyError:
             self.acquisition_date = None
 
-        try:
-            self.original_filename = self.metadata['fil']
-        except KeyError:
-            if isinstance(fcs_path_or_data, str):
+
+        # THIS PART CONFLICTS WITH OUR USE OF WSP
+        # try:
+        #     self.original_filename = self.metadata['fil']
+        # except KeyError:
+        #     if isinstance(fcs_path_or_data, str):
+        #         self.original_filename = os.path.basename(fcs_path_or_data)
+        #     else:
+        #         self.original_filename = None
+        
+        if isinstance(fcs_path_or_data, str):
                 self.original_filename = os.path.basename(fcs_path_or_data)
-            else:
-                self.original_filename = None
+        else:
+            self.original_filename = None
 
         if sample_id is None:
             self.id = self.original_filename
